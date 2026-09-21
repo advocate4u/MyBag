@@ -1,20 +1,43 @@
-# MAA Bala Sundri Enterprises
+# MAA Bala Sundri Enterprises — MyBag
 
-Responsive static business website for **MAA Bala Sundri Enterprises**, showcasing carry-bag solutions and company contact information.
+Responsive React + Vite business website for **MAA Bala Sundri Enterprises**.
 
-## Website
-- Semantic HTML5
-- Responsive CSS3
-- Vanilla JavaScript for mobile navigation
-- Elegant, business-focused visual design
-- No backend or database required
-- Suitable for GitHub Pages and other static hosting
+## Sections
+- Hero / company introduction
+- About the business
+- Product catalogue with 7 product categories
+- Product detail modal for each category
+- Why work with us
+- Two business locations
+- Phone, email and GST contact information
 
-## Product range
-BOPP Bag, D Cut Bag, Handle Bag, W Cut Bag, Box Bag, Stitching Bag, Canvas Jute Bag.
+## Products
+1. BOPP Bag
+2. D Cut Bag
+3. Handle Bag
+4. W Cut Bag
+5. Box Bag
+6. Stitching Bag
+7. Canvas Jute Bag
 
-## Local preview
-Open `index.html` in a browser, or serve the repository directory with any static HTTP server.
+Product information is maintained as data in `src/App.jsx), making it straightforward to add images, specifications or additional products later.
 
-## Deployment
-The project is ready for GitHub Pages or standard static hosting.
+## Tech stack
+- React
+- Vite
+- JavaScript
+- CSS
+- GitHub Pages
+
+## Run locally
+```bash
+npm install
+npm run dev
+```
+
+## Build
+```bash
+npm run build
+```
+
+The GitHub Pages workflow builds the Vite application and deploys the generated `dist` folder.
