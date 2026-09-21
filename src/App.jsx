@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { companyConfig } from "./config";
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${String(path).replace(/^\/+/, "")}`;
+
 function Header() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
@@ -15,7 +17,7 @@ function Header() {
 }
 
 function ProductCard({product,onDetails}) {
-  return <article className="product-card"><div className="product-image-wrap"><img src={product.image} alt={product.name} loading="lazy"/><span className="product-number">{product.id}</span></div><div className="product-info"><h3>{product.name}</h3><p>{product.summary}</p><button className="details-link" onClick={()=>onDetails(product)}>View details <span>→</span></button></div></article>;
+  return <article className="product-card"><div className="product-image-wrap"><img src={assetUrl(product.image)} alt={product.name} loading="lazy" decoding="async" width="640" height="490"/><span className="product-number">{product.id}</span></div><div className="product-info"><h3>{product.name}</h3><p>{product.summary}</p><button className="details-link" onClick={()=>onDetails(product)}>View details <span>→</span></button></div></article>;
 }
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
     <main>
       <section className="hero"><div className="hero-shape shape-one"/><div className="hero-shape shape-two"/><div className="container hero-grid">
         <div className="hero-copy"><p className="eyebrow">Reliable. Practical. Built for business.</p><h1>Carry solutions that <em>work as hard</em> as your business.</h1><p className="hero-text">{c.description} With over {c.experienceYears} years in the industry, we understand the importance of practical packaging solutions.</p><div className="hero-actions"><a className="btn btn-primary" href="#products">Explore Products <span>→</span></a><a className="btn btn-light" href="#contact">Get in touch</a></div><div className="trust-row"><span><b>{c.experienceYears}</b> Years Experience</span><span><b>{c.stats.productSolutions}</b> Bag Solutions</span><span><b>{c.stats.locations}</b> Locations</span></div></div>
-        <div className="hero-art"><img src="/products/hero-bags.svg" alt="Carry bag product range"/></div>
+        <div className="hero-art"><img src={assetUrl("products/hero-bags.svg")} alt="Carry bag product range" loading="eager" fetchPriority="high" decoding="async" width="510" height="470"/></div>
       </div></section>
 
       <section className="intro section" id="about"><div className="container intro-grid"><div><p className="eyebrow">{c.about.eyebrow}</p><h2>{c.about.heading}</h2></div><div className="intro-copy">{c.about.paragraphs.map((p,i)=><p key={i}>{p}</p>)}</div></div></section>
@@ -49,7 +51,7 @@ function App() {
       <section className="contact section" id="contact"><div className="container contact-grid"><div className="contact-copy"><p className="eyebrow">Contact us</p><h2>Let’s find the right <em>bag for your need.</em></h2><p>Share your product, quantity or customization requirement with us.</p><a className="phone" href={`tel:${c.phone}`}>{c.phoneDisplay} <span>→</span></a><a className="email" href={`mailto:${c.email}`}>{c.email}</a><a className="btn btn-primary" href={`https://wa.me/${c.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer">WhatsApp Enquiry →</a></div><div className="locations">{c.addresses.map((a,i)=><article className="location" key={a.label}><span className="location-no">0{i+1}</span><h3>{a.label}</h3><p>{a.lines.map((line,j)=><span key={j}>{line}{j<a.lines.length-1&&<br/>}</span>)}</p></article>)}<div className="gst"><span>GST Registration</span><strong>{c.gst}</strong></div></div></div></section>
     </main>
     <footer className="footer"><div className="container footer-inner"><div className="brand footer-brand"><span className="brand-mark">{c.shortName}</span><span><strong>{c.name}</strong><small>{c.legalSuffix}</small></span></div><p>{c.tagline}</p><a href="#top">Back to top ↑</a></div></footer>
-    {selected&&<div className="modal-backdrop" onClick={()=>setSelected(null)}><div className="modal" role="dialog" aria-modal="true" onClick={e=>e.stopPropagation()}><button className="modal-close" aria-label="Close" onClick={()=>setSelected(null)}>×</button><img src={selected.image} alt={selected.name}/><p className="eyebrow">Product {selected.id}</p><h2>{selected.name}</h2><p>{selected.details}</p><a className="btn btn-primary" href="#contact" onClick={()=>setSelected(null)}>Enquire about this product →</a></div></div>}
+    {selected&&<div className="modal-backdrop" onClick={()=>setSelected(null)}><div className="modal" role="dialog" aria-modal="true" onClick={e=>e.stopPropagation()}><button className="modal-close" aria-label="Close" onClick={()=>setSelected(null)}>×</button><img src={assetUrl(selected.image)} alt={selected.name} loading="eager" decoding="async" width="560" height="230"/><p className="eyebrow">Product {selected.id}</p><h2>{selected.name}</h2><p>{selected.details}</p><a className="btn btn-primary" href="#contact" onClick={()=>setSelected(null)}>Enquire about this product →</a></div></div>}
   </>;
 }
 export default App;
