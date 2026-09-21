@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { companyConfig } from "./config";
 
 const products = [
   { id:"01", name:"BOPP Bag", image:"/products/bopp-bag.svg", summary:"A presentation-friendly carry-bag format for business packaging requirements.", details:"BOPP bags are designed for applications where a clean product presentation and practical carrying solution are important." },
@@ -15,11 +16,11 @@ function Header() {
   const close = () => setOpen(false);
   return <header className="site-header">
     <div className="container nav-wrap">
-      <a className="brand" href="#top" onClick={close}><span className="brand-mark">MBS</span><span><strong>MAA Bala Sundri</strong><small>ENTERPRISES</small></span></a>
+      <a className="brand" href="#top" onClick={close}><span className="brand-mark">{companyConfig.shortName}</span><span><strong>{companyConfig.name}</strong><small>ENTERPRISES</small></span></a>
       <button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>☰</button>
       <nav className={`nav ${open ? "open" : ""}`} aria-label="Primary navigation">
         <a href="#about" onClick={close}>About</a><a href="#products" onClick={close}>Products</a><a href="#business" onClick={close}>Why Us</a><a href="#contact" onClick={close}>Contact</a>
-        <a className="nav-cta" href="tel:+918571958200">Call Us</a>
+        <a className="nav-cta" href="tel:${companyConfig.phone}">Call Us</a>
       </nav>
     </div>
   </header>;
@@ -75,11 +76,11 @@ function App() {
 
       <section className="contact section" id="contact">
         <div className="container contact-grid">
-          <div className="contact-copy"><p className="eyebrow">Contact us</p><h2>Let’s find the right <em>bag for your need.</em></h2><p>Have a requirement or want to discuss products? Reach out to us.</p><a className="phone" href="tel:+918571958200">+91 85719 58200 <span>→</span></a><a className="email" href="mailto:mbsenterprises15@gmail.com">mbsenterprises15@gmail.com</a></div>
+          <div className="contact-copy"><p className="eyebrow">Contact us</p><h2>Let’s find the right <em>bag for your need.</em></h2><p>Have a requirement or want to discuss products? Reach out to us.</p><a className="phone" href="tel:+918571958200">{companyConfig.phoneDisplay} <span>→</span></a><a className="email" href="mailto:{companyConfig.email}">mbsenterprises15@gmail.com</a></div>
           <div className="locations">
-            <article className="location"><span className="location-no">01</span><h3>Naraingarh, Ambala</h3><p>312, Ground Floor,<br />Near Radha Swami Bhawan,<br />Naraingarh, Ambala, Haryana,<br />India — 134203</p></article>
-            <article className="location"><span className="location-no">02</span><h3>Gharaunda, Karnal</h3><p>Ward No — 3,<br />Near New Grain Market,<br />Gharaunda, Karnal, Haryana,<br />India — 132114</p></article>
-            <div className="gst"><span>GST Registration</span><strong>06BUNPD4860K1ZC</strong></div>
+            <article className="location"><span className="location-no">01</span><h3>{companyConfig.addresses[0].label}</h3><p>{companyConfig.addresses[0].lines.map((line, i) => <span key={i}>{line}{i < companyConfig.addresses[0].lines.length - 1 && <br />}</span>)}</p></article>
+            <article className="location"><span className="location-no">02</span><h3>{companyConfig.addresses[1].label}</h3><p>{companyConfig.addresses[1].lines.map((line, i) => <span key={i}>{line}{i < companyConfig.addresses[1].lines.length - 1 && <br />}</span>)}</p></article>
+            <div className="gst"><span>GST Registration</span><strong>{companyConfig.gst}</strong></div>
           </div>
         </div>
       </section>
