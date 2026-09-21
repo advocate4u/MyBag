@@ -20,7 +20,7 @@ function Header() {
       <button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>☰</button>
       <nav className={`nav ${open ? "open" : ""}`} aria-label="Primary navigation">
         <a href="#about" onClick={close}>About</a><a href="#products" onClick={close}>Products</a><a href="#business" onClick={close}>Why Us</a><a href="#contact" onClick={close}>Contact</a>
-        <a className="nav-cta" href="tel:${companyConfig.phone}">Call Us</a>
+        <a className="nav-cta" href={`tel:${companyConfig.phone}`}>Call Us</a>
       </nav>
     </div>
   </header>;
