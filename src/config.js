@@ -36,7 +36,7 @@ export const companyConfig = {
   { id:"06", name:"Stitching Bag", image:"/products/stitching-bag.svg", summary:"Stitched construction for practical handling requirements.", details:"Stitching bags use stitched construction and can be considered where a reinforced bag format is required." },
   { id:"07", name:"Canvas Jute Bag", image:"/products/canvas-jute-bag.svg", summary:"Natural-fabric option for reusable and branded applications.", details:"Canvas and jute bags offer a natural presentation and can be considered for promotional, retail and general carrying needs." },
   { id:"08", name:"U Cut Bag", image:"/products/d-cut-bag.svg", summary:"U-cut carry-bag format for customized packaging requirements.", details:"U Cut bags are part of the company's wider carry-bag offering and can be discussed for customized business requirements." }
-];,
+],
   seo: {
     title: "MAA Bala Sundri Enterprises | Carry Bag Solutions",
     description: "MAA Bala Sundri Enterprises provides carry bags and customized packaging solutions for industrial, manufacturing, retail and wholesale requirements.",
